@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/rngesusexe/Programming/yolov5/YOLOV5_C/build",
+  "command": "/usr/bin/c++  -I/home/rngesusexe/Programming/yolov5/YOLOV5_C/include -isystem /usr/local/include/opencv4 -g -std=gnu++11 -o CMakeFiles/yolo_v5_cpp.dir/src/inference.cpp.o -c /home/rngesusexe/Programming/yolov5/YOLOV5_C/src/inference.cpp",
+  "file": "/home/rngesusexe/Programming/yolov5/YOLOV5_C/src/inference.cpp"
+},
+{
+  "directory": "/home/rngesusexe/Programming/yolov5/YOLOV5_C/build",
+  "command": "/usr/bin/c++  -I/home/rngesusexe/Programming/yolov5/YOLOV5_C/include -isystem /usr/local/include/opencv4 -g -std=gnu++11 -o CMakeFiles/yolo_v5_cpp.dir/src/main.cpp.o -c /home/rngesusexe/Programming/yolov5/YOLOV5_C/src/main.cpp",
+  "file": "/home/rngesusexe/Programming/yolov5/YOLOV5_C/src/main.cpp"
+}
+]
