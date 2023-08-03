@@ -1,3 +1,0 @@
-/home/rngesusexe/Programming/YOLOV5_C/build/CMakeFiles/yolo_v5_cpp.dir
-/home/rngesusexe/Programming/YOLOV5_C/build/CMakeFiles/edit_cache.dir
-/home/rngesusexe/Programming/YOLOV5_C/build/CMakeFiles/rebuild_cache.dir

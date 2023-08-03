@@ -11,7 +11,7 @@ std::vector<std::string> load_class_list() {
 }
 
 void load_net(cv::dnn::Net& net, bool is_cuda) {
-    auto result = cv::dnn::readNet("../yolo_v5_model/yolov8s.onnx");
+    auto result = cv::dnn::readNet("../models/yolov8s.onnx");
     if (is_cuda) {
         std::cout << "Attempty to use CUDA\n";
         result.setPreferableBackend(cv::dnn::DNN_BACKEND_CUDA);
