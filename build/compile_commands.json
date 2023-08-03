@@ -1,12 +1,42 @@
 [
 {
-  "directory": "/home/rngesusexe/Programming/yolov5/YOLOV5_C/build",
-  "command": "/usr/bin/c++  -I/home/rngesusexe/Programming/yolov5/YOLOV5_C/include -isystem /usr/local/include/opencv4 -g -std=gnu++11 -o CMakeFiles/yolo_v5_cpp.dir/src/inference.cpp.o -c /home/rngesusexe/Programming/yolov5/YOLOV5_C/src/inference.cpp",
-  "file": "/home/rngesusexe/Programming/yolov5/YOLOV5_C/src/inference.cpp"
+  "directory": "/home/rngesusexe/Programming/YOLOV5_C/build",
+  "command": "/usr/bin/c++  -I/home/rngesusexe/Programming/YOLOV5_C/include -I/usr/local/include/eigen3 -isystem /usr/local/include/opencv4 -g -std=gnu++17 -o CMakeFiles/yolo_v5_cpp.dir/src/inference.cpp.o -c /home/rngesusexe/Programming/YOLOV5_C/src/inference.cpp",
+  "file": "/home/rngesusexe/Programming/YOLOV5_C/src/inference.cpp"
 },
 {
-  "directory": "/home/rngesusexe/Programming/yolov5/YOLOV5_C/build",
-  "command": "/usr/bin/c++  -I/home/rngesusexe/Programming/yolov5/YOLOV5_C/include -isystem /usr/local/include/opencv4 -g -std=gnu++11 -o CMakeFiles/yolo_v5_cpp.dir/src/main.cpp.o -c /home/rngesusexe/Programming/yolov5/YOLOV5_C/src/main.cpp",
-  "file": "/home/rngesusexe/Programming/yolov5/YOLOV5_C/src/main.cpp"
+  "directory": "/home/rngesusexe/Programming/YOLOV5_C/build",
+  "command": "/usr/bin/c++  -I/home/rngesusexe/Programming/YOLOV5_C/include -I/usr/local/include/eigen3 -isystem /usr/local/include/opencv4 -g -std=gnu++17 -o CMakeFiles/yolo_v5_cpp.dir/src/main.cpp.o -c /home/rngesusexe/Programming/YOLOV5_C/src/main.cpp",
+  "file": "/home/rngesusexe/Programming/YOLOV5_C/src/main.cpp"
+},
+{
+  "directory": "/home/rngesusexe/Programming/YOLOV5_C/build",
+  "command": "/usr/bin/c++  -I/home/rngesusexe/Programming/YOLOV5_C/include -I/usr/local/include/eigen3 -isystem /usr/local/include/opencv4 -g -std=gnu++17 -o CMakeFiles/yolo_v5_cpp.dir/src/BYTETracker.cpp.o -c /home/rngesusexe/Programming/YOLOV5_C/src/BYTETracker.cpp",
+  "file": "/home/rngesusexe/Programming/YOLOV5_C/src/BYTETracker.cpp"
+},
+{
+  "directory": "/home/rngesusexe/Programming/YOLOV5_C/build",
+  "command": "/usr/bin/c++  -I/home/rngesusexe/Programming/YOLOV5_C/include -I/usr/local/include/eigen3 -isystem /usr/local/include/opencv4 -g -std=gnu++17 -o CMakeFiles/yolo_v5_cpp.dir/src/KalmanFilter.cpp.o -c /home/rngesusexe/Programming/YOLOV5_C/src/KalmanFilter.cpp",
+  "file": "/home/rngesusexe/Programming/YOLOV5_C/src/KalmanFilter.cpp"
+},
+{
+  "directory": "/home/rngesusexe/Programming/YOLOV5_C/build",
+  "command": "/usr/bin/c++  -I/home/rngesusexe/Programming/YOLOV5_C/include -I/usr/local/include/eigen3 -isystem /usr/local/include/opencv4 -g -std=gnu++17 -o CMakeFiles/yolo_v5_cpp.dir/src/lapjv.cpp.o -c /home/rngesusexe/Programming/YOLOV5_C/src/lapjv.cpp",
+  "file": "/home/rngesusexe/Programming/YOLOV5_C/src/lapjv.cpp"
+},
+{
+  "directory": "/home/rngesusexe/Programming/YOLOV5_C/build",
+  "command": "/usr/bin/c++  -I/home/rngesusexe/Programming/YOLOV5_C/include -I/usr/local/include/eigen3 -isystem /usr/local/include/opencv4 -g -std=gnu++17 -o CMakeFiles/yolo_v5_cpp.dir/src/Object.cpp.o -c /home/rngesusexe/Programming/YOLOV5_C/src/Object.cpp",
+  "file": "/home/rngesusexe/Programming/YOLOV5_C/src/Object.cpp"
+},
+{
+  "directory": "/home/rngesusexe/Programming/YOLOV5_C/build",
+  "command": "/usr/bin/c++  -I/home/rngesusexe/Programming/YOLOV5_C/include -I/usr/local/include/eigen3 -isystem /usr/local/include/opencv4 -g -std=gnu++17 -o CMakeFiles/yolo_v5_cpp.dir/src/Rect.cpp.o -c /home/rngesusexe/Programming/YOLOV5_C/src/Rect.cpp",
+  "file": "/home/rngesusexe/Programming/YOLOV5_C/src/Rect.cpp"
+},
+{
+  "directory": "/home/rngesusexe/Programming/YOLOV5_C/build",
+  "command": "/usr/bin/c++  -I/home/rngesusexe/Programming/YOLOV5_C/include -I/usr/local/include/eigen3 -isystem /usr/local/include/opencv4 -g -std=gnu++17 -o CMakeFiles/yolo_v5_cpp.dir/src/STrack.cpp.o -c /home/rngesusexe/Programming/YOLOV5_C/src/STrack.cpp",
+  "file": "/home/rngesusexe/Programming/YOLOV5_C/src/STrack.cpp"
 }
 ]

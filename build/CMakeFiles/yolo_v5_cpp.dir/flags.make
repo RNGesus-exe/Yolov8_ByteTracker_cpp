@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/rngesusexe/Programming/yolov5/YOLOV5_C/include -isystem /usr/local/include/opencv4
+CXX_INCLUDES = -I/home/rngesusexe/Programming/YOLOV5_C/include -I/usr/local/include/eigen3 -isystem /usr/local/include/opencv4
 
-CXX_FLAGS = -g -std=gnu++11
+CXX_FLAGS = -g -std=gnu++17
 
