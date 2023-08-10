@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(yolo_v5_cpp VERSION 2.0)
+project(yolo_bytetrack_cpp VERSION 2.0)
 
 # Version of C++ used
 set(CMAKE_CXX_STANDARD 17)

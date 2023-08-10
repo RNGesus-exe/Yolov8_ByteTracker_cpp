@@ -2,7 +2,7 @@
 
 std::vector<std::string> load_class_list() {
     std::vector<std::string> class_list;
-    std::ifstream ifs("../yolo_v5_model/classes.txt");
+    std::ifstream ifs("../models/classes.txt");
     std::string line;
     while (getline(ifs, line)) {
         class_list.push_back(line);
@@ -44,13 +44,10 @@ float calculateIOU(byte_track::Object& rect1, byte_track::Object& rect2) {
 int checkOverlapping(byte_track::Object& obj_a, byte_track::Object& obj_b) {
     float iou = calculateIOU(obj_a, obj_b);
 
-    // std::cout << obj_a.class_name << " " << obj_a.label << " " << obj_b.class_name << " " << obj_b.label << " " << iou << std::endl;
-
-    if (obj_a.class_name == obj_b.class_name && iou >= 0.1f) {
+    if (obj_a.class_name == obj_b.class_name && iou >= 0.4f) {
         return 1;
     }
 
-    // To Adjust
     return (iou >= 0.5f) ? 2 : 0;
 };
 
@@ -144,30 +141,60 @@ void detect(cv::Mat& image, cv::dnn::Net& net, std::vector<byte_track::Object>& 
         byte_track::Object result(byte_track::Rect<float>(boxes[idx].x, boxes[idx].y, boxes[idx].width, boxes[idx].height), i,
                                   confidences[idx], className[class_ids[idx]]);
         result.label = 0; // No unique id provided yet
+        result.classes_score[result.class_name] = 1;
         new_outputs.push_back(result);
     }
 
-    // for (int i = 0; i < new_outputs.size(); i++) {
-    //     printf("ID: %d, Label: %s, New: %.2f %.2f %.2f %.2f conf = %f\n", new_outputs[i].label, new_outputs[i].class_name.c_str(),
-    //            new_outputs[i].rect.x(), new_outputs[i].rect.y(), new_outputs[i].rect.width(), new_outputs[i].rect.height(),
-    //            new_outputs[i].prob);
-    // }
-    // printf("\n");
-    // for (int i = 0; i < output.size(); i++) {
-    //    printf("ID: %d, Label: %s, Old: %.2f %.2f %.2f %.2f conf = %f\n", output[i].label, output[i].class_name.c_str(),
-    //           output[i].rect.x(), output[i].rect.y(), output[i].rect.width(), output[i].rect.height(), output[i].prob);
-    // }
-    // printf("\n\n");
+    /*
+    printf("\n=========DETECTED===============\n");
+    for (int i = 0; i < new_outputs.size(); i++) {
+        printf("ID: %d, Label: %s, New: %.2f %.2f %.2f %.2f conf = %f\n", new_outputs[i].label, new_outputs[i].class_name.c_str(),
+               new_outputs[i].rect.x(), new_outputs[i].rect.y(), new_outputs[i].rect.width(), new_outputs[i].rect.height(),
+               new_outputs[i].prob);
+    }
+    printf("\n=========== OLD ===================\n");
+    for (int i = 0; i < output.size(); i++) {
+        printf("ID: %d, Label: %s, Old: %.2f %.2f %.2f %.2f conf = %f\n", output[i].label, output[i].class_name.c_str(),
+               output[i].rect.x(), output[i].rect.y(), output[i].rect.width(), output[i].rect.height(), output[i].prob);
+        for (auto j = output[i].classes_score.begin(); j != output[i].classes_score.end(); j++) {
+            printf("Key = %s : Value = %d\n", j->first.c_str(), j->second);
+        }
+    }
+    printf("\n\n");
+    */
 
-    // Remove Overlapping Objects
+    // Remove Overlapping Objects  && Remember frequency of each object class_name
     for (int i = 0; i < new_outputs.size(); i++) {
         for (int j = 0; j < output.size(); j++) {
             int ret = checkOverlapping(new_outputs[i], output[j]);
-            if (ret == 1) {
-                new_outputs[i].label = output[j].label;
-                output.erase(output.begin() + j);
-                j--;
+
+            // std::cout << new_outputs[i].class_name << " " << output[j].class_name << " " << ret << std::endl;
+            if (!ret) {
+                continue;
             }
+
+            if (output[j].classes_score.find(new_outputs[i].class_name) != output[j].classes_score.end()) {
+                output[j].classes_score[new_outputs[i].class_name]++;
+            } else {
+                output[j].classes_score[new_outputs[i].class_name] = 1;
+            }
+
+            std::string maxKey;
+            int maxValue = std::numeric_limits<int>::min(); // Initialize with the smallest possible value
+
+            for (const auto& entry : output[j].classes_score) {
+                if (entry.second > maxValue) {
+                    maxKey = entry.first;
+                    maxValue = entry.second;
+                }
+            }
+
+            new_outputs[i].label = output[j].label;
+            new_outputs[i].classes_score = output[j].classes_score;
+            new_outputs[i].class_name = maxKey;
+
+            output.erase(output.begin() + j);
+            j--;
         }
     }
 

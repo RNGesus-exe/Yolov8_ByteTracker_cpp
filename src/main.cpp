@@ -11,7 +11,7 @@ extern "C" {
 
 int main(int argc, char** argv) {
 
-    const char* path = "../videos/lord_have_mercy.avi";
+    const char* path = "../videos/sample.mp4";
 
     // Open video file
     AVFormatContext* formatContext = nullptr;
@@ -128,27 +128,18 @@ int main(int argc, char** argv) {
 
                 cv::Mat image(codecContext->height, codecContext->width, CV_8UC3, rgbFrame->data[0], rgbFrame->linesize[0]);
 
-                // std::cout << "Frame no = " << frameCount << "\n\n";
-
                 // Check if Key-Frame
                 if (frame->key_frame) {
                     output.clear();
                 }
 
+                // Yolov8
                 detect(image, net, output, class_list, object_id);
 
                 // Byte Tracker
                 std::vector<byte_track::BYTETracker::STrackPtr> tracked_outputs = tracker.update(output);
 
-                // printf("\nFrame %d, Detected Objects %ld, Tracked Objects %ld\n", frame_count, output.size(),
-                // tracked_outputs.size()); for (int i = 0; i < tracked_outputs.size(); i++) {
-                //     printf("Info: %ld, Original: %.2f %.2f %.2f %.2f , New: %.2f %.2f %.2f %.2f\n",
-                //     tracked_outputs[i]->getTrackId(),
-                //            output[i].rect.x(), output[i].rect.y(), output[i].rect.width(), output[i].rect.height(),
-                //            tracked_outputs[i]->getRect().x(), tracked_outputs[i]->getRect().y(),
-                //            tracked_outputs[i]->getRect().width(), tracked_outputs[i]->getRect().height());
-                //}
-
+                // Display Byte Tracker results
                 for (int i = 0; i < tracked_outputs.size(); ++i) {
 
                     cv::Rect box(tracked_outputs[i]->getRect().x(), tracked_outputs[i]->getRect().y(),
@@ -158,9 +149,9 @@ int main(int argc, char** argv) {
                     const auto color = colors[classId % colors.size()];
                     cv::rectangle(image, box, color, 3);
 
-                    cv::rectangle(image, cv::Point(box.x, box.y - 20), cv::Point(box.x + box.width, box.y), color, cv::FILLED);
-                    cv::putText(image, className + '(' + std::to_string(classId) + ')', cv::Point(box.x, box.y - 5),
-                                cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(0, 0, 0));
+                    cv::rectangle(image, cv::Point(box.x, box.y + 20), cv::Point(box.x + box.width, box.y), color, cv::FILLED);
+                    cv::putText(image, className + '(' + std::to_string(classId) + ')', cv::Point(box.x, box.y + 15),
+                                cv::FONT_HERSHEY_SIMPLEX, 0.7, cv::Scalar(0, 0, 0));
                 }
 
                 cv::putText(image, std::to_string(frameCount).c_str(), cv::Point(10, 25), cv::FONT_HERSHEY_SIMPLEX, 1,

@@ -10,7 +10,7 @@
 #include <memory>
 #include <vector>
 
-const float CONFIDENCE_THRESHOLD = 0.4;
+const float CONFIDENCE_THRESHOLD = 0.5;
 
 namespace byte_track
 {
@@ -22,7 +22,7 @@ public:
     BYTETracker(const int& frame_rate = 30,
                 const int& track_buffer = 30,
                 const float& track_thresh = CONFIDENCE_THRESHOLD,
-                const float& high_thresh = 0.6,
+                const float& high_thresh = CONFIDENCE_THRESHOLD,
                 const float& match_thresh = 0.8);
     ~BYTETracker();
 

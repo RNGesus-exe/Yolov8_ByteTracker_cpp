@@ -8,6 +8,7 @@ struct Object {
     int label;
     float prob;
     std::string class_name;
+    std::unordered_map<std::string, int> classes_score;
 
     Object(const Rect<float>& _rect, const int& _label, const float& _prob, const std::string& class_name);
 };
